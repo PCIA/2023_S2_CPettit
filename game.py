@@ -12,9 +12,9 @@ else:
     computer_choice = 'scissors'
 
 user_choice = input('')
-while user_choice != 'rock' and
+while (user_choice != 'rock' and
        user_choice != 'paper' and
-       user_choice 1= 'scissors'):
+       user_choice != 'scissors'):
     user_choice = input('rock, paper or scissors? ')
 
 if computer_choice == user_choice:
