@@ -31,9 +31,6 @@ def sell_product():
         if random.random() < 0.1 * (1/reputation):
             print(f"Oh no! A customer complained about the quality of the {product}.")
             reputation -= 1
-            if reputation == 0:
-                print("You've been evicted! Game over.")
-                play_again()
     else:
         print("Sorry, we're out of stock!")
 
@@ -66,9 +63,6 @@ def buy_inventory():
                 if random.random() < 0.1 * (1/reputation):
                     print(f"Oh no! Some of the {product}s we bought were spoiled.")
                     reputation -= 1
-                    if reputation == 0:
-                        print("You've been evicted! Game over.")
-                        play_again()
             else:
                 print("Sorry, you don't have enough money to buy that much inventory.")
         else:
@@ -76,6 +70,17 @@ def buy_inventory():
     else:
         print("Invalid input.")
 
-def play_again():
-    global money, customers, product_inventories, reputation
-    print("You ended the game with $" + money + "! Try again?")
+print("Welcome to the shop game!")
+while True:
+    print_menu()
+    choice = input("Enter a number: ")
+    if choice == "1":
+        sell_product()
+    elif choice == "2":
+        buy_ad()
+    elif choice == "3":
+        buy_inventory()
+    elif choice == "4":
+        print("Goodbye!")
+        break
+   
