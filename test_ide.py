@@ -18,11 +18,11 @@ while reset == True:
         product_inventories = {"apple": 10, "banana": 5, "orange": 3}
         ad_cost = 5
         ad_multiplier = 2
-        reputation = 1
+        reputation = 2
 
     def start_game():
         # a function which allows the user to retry or leave the game
-        global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation
+        global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation, reset
         new_game()
         answer = input('Play game? (y/n)')
         if answer == 'y':
@@ -31,7 +31,6 @@ while reset == True:
             reset = False
         else:
             print('Invalid input')
-
         return
     
     def print_menu():
@@ -98,21 +97,23 @@ while reset == True:
            print("Invalid input.")
 
     start_game()
-    print("Welcome to the shop game!")
-    while True:
-        print_menu()
-        choice = input("Enter a number: ")
-        if choice == "1":
-            sell_product()
-        elif choice == "2":
-            buy_ad()
-        elif choice == "3":
-            buy_inventory()
-        elif choice == "4":
-            print("Goodbye!")
-            reset = False
-    
-    if reset == False:
-        print('Goodbye!')
+    if reset == True:
+        print("Welcome to the shop game!")
+        while True:
+            print_menu()
+            choice = input("Enter a number: ")
+            if choice == "1":
+                sell_product()
+            elif choice == "2":
+                buy_ad()
+            elif choice == "3":
+                buy_inventory()
+            elif choice == "4":
+                print("Goodbye!")
+                reset = False
+    elif reset == True and reputation == 0:
+        print('You lose!')
+        start_game()
+    else:
+        print('Goodbye')
         break
-
