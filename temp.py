@@ -1,3 +1,7 @@
-print("Hello, world!")
-name = input("What is your name? ")
-print("Hello " + name + "! ")
+myList = ['dog','horse','cat']
+
+x = len(myList)
+i = 0
+while (i < x):
+    print(myList[i])
+    i = i + 1
