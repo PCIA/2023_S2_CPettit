@@ -1,11 +1,13 @@
 import random
 import time
 
-reset = False
-if reset == True:
-    reset = False
+
+reset = True
 
 
+while reset == True:
+    
+    # defines the starting values
     money = 0
     customers = 0
     products = ["apple", "banana", "orange"]
@@ -15,7 +17,24 @@ if reset == True:
     ad_multiplier = 2
     reputation = 1
 
+    def lose_game():
+        # a function which allows the user to retry or leave the game
+        global reset, money, customers, reputation
+        money = 0
+        customers = 0
+        reputation = 1
+        answer = input('Do you want to start over? (y/n)')
+        if answer == 'y':
+            print('Good luck!')
+        elif answer == 'n':
+            print('Goodbye!')
+            reset = False
+        else:
+            print('Invalid input')
+        return
+    
     def print_menu():
+        # shows current status and available options
         print(f"\nYour balance: ${money}")
         print(f"Customers: {customers}")
         print(f"Reputation: {reputation}")
@@ -86,20 +105,9 @@ if reset == True:
         elif choice == "2":
             buy_ad()
         elif choice == "3":
-         buy_inventory()
+            buy_inventory()
         elif choice == "4":
             print("Goodbye!")
-            break
+            reset = False
             
-    def lose_game():
-        if reputation == 0:
-            while reputation == 0:
-                answer = input('You were evicted! Try again? (y/n)')
-                if answer == 'y':
-                    reset = True
-                    break
-                elif answer == 'n':
-                    print('Goodbye!')
-                    break
-                else:
-                    print('Invalid input')
+    
