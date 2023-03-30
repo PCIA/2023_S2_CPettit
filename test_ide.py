@@ -7,22 +7,23 @@ reset = True
 
 while reset == True:
     
-    # defines the starting values
-    money = 0
-    customers = 0
-    products = ["apple", "banana", "orange"]
-    product_prices = {"apple": 1, "banana": 2, "orange": 3}
-    product_inventories = {"apple": 10, "banana": 5, "orange": 3}
-    ad_cost = 5
-    ad_multiplier = 2
-    reputation = 1
+    def new_game():
+
+        # defines the starting values
+        global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation
+        money = 0
+        customers = 0
+        products = ["apple", "banana", "orange"]
+        product_prices = {"apple": 1, "banana": 2, "orange": 3}
+        product_inventories = {"apple": 10, "banana": 5, "orange": 3}
+        ad_cost = 5
+        ad_multiplier = 2
+        reputation = 1
 
     def start_game():
         # a function which allows the user to retry or leave the game
-        global reset, money, customers, reputation
-        money = 0
-        customers = 0
-        reputation = 1
+        global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation
+        new_game()
         answer = input('Play game? (y/n)')
         if answer == 'y':
             print('Good luck!')
@@ -56,9 +57,6 @@ while reset == True:
                 print(f"Oh no! A customer complained about the quality of the {product}.")
                 reputation -= 1
                 start_game()
-                if reset == False:
-                    print('Goodbye!')
-                    break
         else:
             print("Sorry, we're out of stock!")
 
@@ -92,9 +90,6 @@ while reset == True:
                         print(f"Oh no! Some of the {product}s we bought were spoiled.")
                         reputation -= 1
                         start_game()
-                        if reset == False:
-                            print('Goodbye!')
-                            break
                 else:
                     print("Sorry, you don't have enough money to buy that much inventory.")
             else:
@@ -102,6 +97,7 @@ while reset == True:
         else:
            print("Invalid input.")
 
+    start_game()
     print("Welcome to the shop game!")
     while True:
         print_menu()
@@ -115,4 +111,8 @@ while reset == True:
         elif choice == "4":
             print("Goodbye!")
             reset = False
+    
+    if reset == False:
+        print('Goodbye!')
+        break
 
