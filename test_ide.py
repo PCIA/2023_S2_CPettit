@@ -17,20 +17,20 @@ while reset == True:
     ad_multiplier = 2
     reputation = 1
 
-    def lose_game():
+    def start_game():
         # a function which allows the user to retry or leave the game
         global reset, money, customers, reputation
         money = 0
         customers = 0
         reputation = 1
-        answer = input('Do you want to start over? (y/n)')
+        answer = input('Play game? (y/n)')
         if answer == 'y':
             print('Good luck!')
         elif answer == 'n':
-            print('Goodbye!')
             reset = False
         else:
             print('Invalid input')
+
         return
     
     def print_menu():
@@ -55,7 +55,10 @@ while reset == True:
             if random.random() < 0.1 * (1/reputation):
                 print(f"Oh no! A customer complained about the quality of the {product}.")
                 reputation -= 1
-                lose_game()
+                start_game()
+                if reset == False:
+                    print('Goodbye!')
+                    break
         else:
             print("Sorry, we're out of stock!")
 
@@ -88,7 +91,10 @@ while reset == True:
                     if random.random() < 0.1 * (1/reputation):
                         print(f"Oh no! Some of the {product}s we bought were spoiled.")
                         reputation -= 1
-                        lose_game()
+                        start_game()
+                        if reset == False:
+                            print('Goodbye!')
+                            break
                 else:
                     print("Sorry, you don't have enough money to buy that much inventory.")
             else:
@@ -109,5 +115,4 @@ while reset == True:
         elif choice == "4":
             print("Goodbye!")
             reset = False
-            
-    
+
