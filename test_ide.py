@@ -8,7 +8,6 @@ reset = True
 while reset == True:
     
     def new_game():
-
         # defines the starting values
         global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation
         money = 0
