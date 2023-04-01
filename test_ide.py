@@ -12,9 +12,9 @@ while reset == True:
         global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation
         money = 0
         customers = 0
-        products = ["apple", "banana", "orange"]
-        product_prices = {"apple": 1, "banana": 2, "orange": 3}
-        product_inventories = {"apple": 10, "banana": 5, "orange": 3}
+        products = ["tea", "coffee", "muffin"]
+        product_prices = {"tea": 1, "coffee": 2, "muffin": 3}
+        product_inventories = {"tea": 10, "coffee": 5, "muffin": 3}
         ad_cost = 5
         ad_multiplier = 2
         reputation = 2
@@ -22,14 +22,16 @@ while reset == True:
     def start_game():
         # a function which allows the user to retry or leave the game
         global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation, reset
-        new_game()
-        answer = input('Play game? (y/n)')
-        if answer == 'y':
-            print('Good luck!')
-        elif answer == 'n':
-            reset = False
-        else:
-            print('Invalid input')
+        if reputation == 0:
+
+            new_game()
+            answer = input('Play game? (y/n)')
+            if answer == 'y':
+                print('Good luck!')
+            elif answer == 'n':
+                reset = False
+            else:
+                print('Invalid input')
         return
     
     def print_menu():
@@ -53,7 +55,7 @@ while reset == True:
             print(f"Sold a {product} for ${product_prices[product]}")
             if random.random() < 0.1 * (1/reputation):
                 print(f"Oh no! A customer complained about the quality of the {product}.")
-                reputation -= 1
+                reputation = max(reputation - 1, 0)
                 start_game()
         else:
             print("Sorry, we're out of stock!")
@@ -82,7 +84,7 @@ while reset == True:
                 total_cost = cost * int(amount)
                 if money >= total_cost:
                     money -= total_cost
-                    product_inventories[product] += int(amount)
+                    product_inventories[product]
                     print(f"Bought {amount} {product}s for ${total_cost}")
                     if random.random() < 0.1 * (1/reputation):
                         print(f"Oh no! Some of the {product}s we bought were spoiled.")
@@ -114,5 +116,5 @@ while reset == True:
         print('You lose!')
         start_game()
     else:
-        print('Goodbye')
+        print('Goodbye!')
         break
