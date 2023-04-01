@@ -1,5 +1,4 @@
 import random
-import time
 
 
 reset = True
@@ -8,8 +7,7 @@ reset = True
 while reset == True:
     
     def new_game():
-        # defines the starting values
-        global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation
+        global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation, answer
         money = 0
         customers = 0
         products = ["tea", "coffee", "muffin"]
@@ -18,22 +16,24 @@ while reset == True:
         ad_cost = 5
         ad_multiplier = 2
         reputation = 2
+        answer = ()
 
     def start_game():
-        # a function which allows the user to retry or leave the game
-        global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation, reset
+        global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation, reset, answer
         new_game()
-        answer = input('Play game? (y/n)')
-        if answer == 'y':
-            print('Good luck!')
-        elif answer == 'n':
-            reset = False
-        else:
-            print('Invalid input')
+        while True:
+            answer = input("Play game? (y/n)")
+            if answer == "y":
+                print('Good luck!')
+                break
+            elif answer == "n":
+                reset = False
+                break
+            else:
+                print("Invalid input.")
         return
     
     def print_menu():
-        # shows current status and available options
         print(f"\nYour balance: ${money}")
         print(f"Customers: {customers}")
         print(f"Reputation: {reputation}")
@@ -56,6 +56,7 @@ while reset == True:
                 reputation = max(reputation - 1, 0)
         else:
             print("Sorry, we're out of stock!")
+        check_game_over()
 
     def buy_ad():
         global money, customers, ad_multiplier
@@ -93,23 +94,16 @@ while reset == True:
                 print("Invalid input.")
         else:
            print("Invalid input.")
+        check_game_over()
 
     def check_game_over():
-        global reset, reputation
+        global reset, reputation, answer
         if reputation == 0:
             print("Oh no, your reputation is 0! You lose!")
-            while True:
-                answer = input("Would you like to play again? (y/n)")
-                if answer == "y":
-                    reset = True
-                    break
-                elif answer == "n":
-                    reset = False
-                    break
-                else:
-                    print("Invalid input.")
+            start_game()
 
     start_game()
+
     if reset == True:
         print("Welcome to the shop game!")
         while True:
@@ -124,9 +118,10 @@ while reset == True:
             elif choice == "4":
                 print("Goodbye!")
                 reset = False
-    elif reset == True and reputation == 0:
-        print('You lose!')
-        start_game()
+                break
+            elif reset == True and reputation == 0:
+                print('Oh no, your reputation is 0! You lose!')
+                start_game()
     else:
         print('Goodbye!')
         break
