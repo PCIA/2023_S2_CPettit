@@ -1,13 +1,13 @@
 import random
 
-
+reputation = 2
 reset = True
 
 
 while reset == True:
     
     def new_game():
-        global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation, answer
+        global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation
         money = 0
         customers = 0
         products = ["tea", "coffee", "muffin"]
@@ -16,21 +16,23 @@ while reset == True:
         ad_cost = 5
         ad_multiplier = 2
         reputation = 2
-        answer = ()
 
     def start_game():
-        global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation, reset, answer
-        new_game()
-        while True:
-            answer = input("Play game? (y/n)")
-            if answer == "y":
-                print('Good luck!')
-                break
-            elif answer == "n":
-                reset = False
-                break
-            else:
-                print("Invalid input.")
+        global money, customers, products, product_prices, product_inventories, ad_cost, ad_multiplier, reputation, reset
+        if reputation == 0:
+            new_game()
+        else:
+            new_game()
+            while True:
+                answer = input("Play game? (y/n)")
+                if answer == "y":
+                    print('Good luck!')
+                    break
+                elif answer == "n":
+                    reset = False
+                    break
+                else:
+                    print("Invalid input.")
         return
     
     def print_menu():
@@ -87,7 +89,7 @@ while reset == True:
                     if reputation > 0 and random.random() < 0.1 * (1/reputation):
                         print(f"Oh no! Some of the {product}s we bought were spoiled.")
                         reputation -= 1
-                        start_game()
+                        check_game_over()
                 else:
                     print("Sorry, you don't have enough money to buy that much inventory.")
             else:
@@ -99,7 +101,7 @@ while reset == True:
     def check_game_over():
         global reset, reputation, answer
         if reputation == 0:
-            print("Oh no, your reputation is 0! You lose!")
+            print("Oh no, your reputation is 0! Try again!")
             start_game()
 
     start_game()
@@ -118,10 +120,10 @@ while reset == True:
             elif choice == "4":
                 print("Goodbye!")
                 reset = False
-                break
+                start_game()
             elif reset == True and reputation == 0:
-                print('Oh no, your reputation is 0! You lose!')
+                print('Oh no, your reputation is 0! Try again!')
                 start_game()
     else:
         print('Goodbye!')
-        break
+        start_game()
