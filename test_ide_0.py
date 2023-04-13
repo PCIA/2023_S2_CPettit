@@ -114,6 +114,8 @@ while reset == True:
             shop = shop + 1
             new_game()
             print('Congratulations, you made it to the next shop!')
+        if shop == 10:
+            print('Congrats, you got the good ending')
         if reputation == 0:
             print('Oh no, what have you done?')
             print('Dear god why')
