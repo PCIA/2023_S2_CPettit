@@ -1,0 +1,41 @@
+def library():
+    global egg, yogurt, waffle, sandwick, donut, coffee, noot, fulcrum, holdem
+    holdem = [egg, yogurt, waffle, sandwick, donut, coffee, noot, fulcrum]
+
+def new_game():
+    global egg, yogurt, waffle, sandwick, donut, coffee, noot, fulcrum
+    noot = 1
+    yogurt = (0.1 * noot) * 20
+    egg = yogurt
+    waffle = yogurt
+    sandwick = yogurt
+    fulcrum = (0.2 * noot) * 20
+    donut = fulcrum
+    coffee = fulcrum
+
+def settingUp():
+    global egg, yogurt, waffle, sandwick, donut, coffee, noot, fulcrum
+    new_game()
+    while True:
+        inputte = input("Play Game? (y/n)")
+        if inputte != "n":
+            break
+        else:
+            print()
+    return
+
+def gold():
+    print(f"\nNoot noot")
+    print(f"\nFulcrum")
+    print(f"\nHoldem")
+    print("1. Egg")
+    print("2. Egg")
+    print("3. Egg")
+    print("4. Leave")
+
+while True:
+    settingUp()
+    new_game()
+    gold()
+    print("eggs are " + str(egg) + " cups.")
+    print()
