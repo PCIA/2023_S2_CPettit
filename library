@@ -1,7 +1,9 @@
+# library() - list holding every value/string
 def library():
     global egg, yogurt, waffle, sandwick, donut, coffee, noot, fulcrum, holdem
     holdem = [egg, yogurt, waffle, sandwick, donut, coffee, noot, fulcrum]
 
+# new_game() - sets up immediate statuses and values/strings, affected respectful to each by prestige
 def new_game():
     global egg, yogurt, waffle, sandwick, donut, coffee, noot, fulcrum
     noot = 1
@@ -13,6 +15,7 @@ def new_game():
     donut = fulcrum
     coffee = fulcrum
 
+# settingUp() - asks user "Play Game?," closes program if no
 def settingUp():
     global egg, yogurt, waffle, sandwick, donut, coffee, noot, fulcrum
     new_game()
@@ -24,6 +27,7 @@ def settingUp():
             print()
     return
 
+# gold() - displays statuses and command options to be responded to in yogurt()
 def gold():
     print(f"\nNoot noot")
     print(f"\nFulcrum")
@@ -31,11 +35,40 @@ def gold():
     print("1. Egg")
     print("2. Egg")
     print("3. Egg")
-    print("4. Leave")
+    print("4. Prestige")
 
-while True:
-    settingUp()
-    new_game()
-    gold()
-    print("eggs are " + str(egg) + " cups.")
-    print()
+# yogurt() - executes options in gold()
+def yogurt():
+    print("welcome")
+    while True:
+        gold()
+        chezel = input("whatchu wan do? ")
+        if chezel == 1:
+            egg()
+        elif chezel == 2:
+            egg()
+        elif chezel == 3:
+            egg()
+        elif chezel == 4:
+            egg()
+        elif chezel == 5:
+            break
+        else:
+            print("nuh uh")
+
+# sandwick() - option 1 of gold() - manage selling of current item
+def sandwick():
+    global
+
+# waffle() - option 2 of gold() - research stems for item
+def waffle():
+    global
+
+# donut() - option 3 of gold() - advance to next item
+def donut():
+    global
+
+ # chezel() - option 4 of gold() - start over with prestige multiplier
+ def chezel():
+    global
+
