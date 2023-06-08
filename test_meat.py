@@ -1,10 +1,13 @@
+import sys
+
 # playGame() - allows useer to execute all functions, otherwise known as play the game
 def playGame():
     a = input("play game (y/n) ")
     if a == "n":
         print("goodbye")
+        exit()
     elif a == "y":
-        reset()
+        fullReset()
         while True:
             displayMenu()
             b = input("what would you like to do ")
@@ -15,14 +18,16 @@ def playGame():
             elif b == "3":
                 displayAdvance()
             elif b == "4":
-                prestige()
+                displayPrestige()
             elif b == "5":
+                print("goodbye")
                 exit()
             else:
-                print("goodbye")
-                break
+                # ask b again
     else:
-        ("invalid")
+        print("invalid")
     return
+
+# no definitions beyond this point | gameplay section
 
 playGame()
