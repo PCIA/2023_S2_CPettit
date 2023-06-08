@@ -8,7 +8,7 @@ def library():
 
 # new_game() - sets up immediate statuses and values/strings, affected respectful to each by prestige
 def new_game():
-    global egg, yogurt, waffle, sandwick, donut, coffee, noot, fulcrum
+    global price, balance, currentItem, advanceReq, nextItem, speed, luck, god_waffles, 
     noot = 1
     yogurt = (0.1 * noot) * 20
     egg = yogurt
@@ -33,7 +33,7 @@ def setting_up():
 # gold() - displays statuses and command options to be responded to in yogurt()
 def display_menu():
     print(f"\nCurrent Item: " + currentItem)
-    print(f"\nMoney: " + money)
+    print(f"\nBalance: ", balance)
     print(f"\nRequirements for next advancement: " + advanceReq)
     print("1. View marketing status")
     print("2. Research")
@@ -94,7 +94,7 @@ def waffle():
 
 # donut() - option 3 of gold() - advance to next item
 def display_advance():
-    print("Next item: ", next_item)
+    print("Next item: ", nextItem)
     advance_choice = input("Advance? (y/n) ")
     if advance_choice == "n":
         pass
@@ -106,7 +106,8 @@ def display_advance():
     return
 
  # chezel() - option 4 of gold() - start over with prestige multiplier
-def chezel():
+def display_prestige():
+    pass
     # ~ display prestige stats
     # ~ print option to prestige
     # ~ print option to exit
