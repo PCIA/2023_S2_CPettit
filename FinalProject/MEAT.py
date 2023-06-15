@@ -7,7 +7,7 @@ import tkinter as tk
 prestige_reset = 1
 currentItem_num = 0
 itemBag = ['waffle', 'mushroom', 'rabbit foot', 'lawnmower', 'goat', 'czech republic flag']
-advanceReq = (currentItem_num + 1) * 500
+advanceReq = (currentItem_num + 1) * 10000
 price = prestige_reset * 10
 balance = 0
 speed = prestige_reset * 1
