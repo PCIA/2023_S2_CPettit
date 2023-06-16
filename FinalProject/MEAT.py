@@ -1,7 +1,7 @@
 import sys
 import time
-import threading
-import tkinter as tk
+import threading # implemented by ChatGPT
+import tkinter as tk # implemented by ChatGPT
 
 # brand new game statuses
 prestige_reset = 1
