@@ -124,7 +124,7 @@ def play_game():
     # create the main game frame
     main_frame = tk.Frame(root)
 
-    # create the buttons for each function
+    # create the buttons for each function - plan on making more buttons
     stats_button = tk.Button(main_frame, text="View marketing status", command=switch_to_stats)
     stats_button.pack()
 
